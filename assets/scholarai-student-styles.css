@@ -1,0 +1,165 @@
+:root {
+  --bg: #0f1115;
+  --phone: #eff0ed;
+  --card: #ffffff;
+  --text: #101524;
+  --muted: #5e667d;
+  --line: #d7dbe4;
+  --teal: #0f8f7b;
+  --teal-dark: #0b6d5e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: radial-gradient(circle at 30% 20%, #232a37, var(--bg));
+  color: var(--text);
+}
+
+.page-wrap {
+  max-width: 430px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--phone);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 30px 70px rgba(0,0,0,.35);
+}
+
+.mobile-browser {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: .8rem;
+  padding: 1.2rem 1rem .8rem;
+}
+.mobile-browser p { text-align: center; margin: 0; font-size: 2rem; font-weight: 700; }
+
+.circle-btn {
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #e5e5e3;
+  font-size: 1.5rem;
+}
+
+.brand-row {
+  background: #f7f6f4;
+  border-top: 1px solid #ece9e6;
+  border-bottom: 1px solid #ece9e6;
+  display: flex;
+  gap: .7rem;
+  align-items: center;
+  padding: .85rem 1rem;
+}
+
+.ghana-bar {
+  width: 6px;
+  height: 44px;
+  border-radius: 99px;
+  background: linear-gradient(#10957d 0 33%, #dfbd17 33% 66%, #bf2433 66% 100%);
+}
+
+.brand-row h1 { margin: 0; font-size: 2rem; }
+.brand-row p { margin: 0; font-size: .82rem; text-transform: uppercase; letter-spacing: .08em; color: #8e93a5; }
+
+.content { padding: 1.2rem 1rem 2rem; }
+.split-top { padding-top: 1.8rem; }
+.center { text-align: center; padding-top: 5rem; }
+
+.tiny-flag {
+  width: 96px;
+  height: 16px;
+  margin: 1.2rem auto;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #10957d 0 33%, #dfbd17 33% 66%, #bf2433 66% 100%);
+}
+
+.pill {
+  margin: 0 auto;
+  max-width: 100%;
+  border: 1px solid #bbd7d0;
+  color: #168773;
+  font-weight: 700;
+  text-align: center;
+  padding: .72rem;
+  border-radius: 999px;
+}
+
+h2 { margin: 1rem 0 .5rem; font-size: 2.9rem; line-height: 1.02; }
+h2 span { color: var(--teal); display: block; }
+
+h3 { font-size: 1.8rem; margin: 0.55rem 0; }
+
+.subtext { color: var(--muted); font-size: 1.12rem; line-height: 1.6; margin-top: .7rem; }
+
+.card-grid { display: grid; gap: 1rem; margin-top: 1.2rem; }
+
+.portal-card,
+.form-panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 1.15rem;
+  box-shadow: 0 8px 28px rgba(26,34,57,.06);
+}
+
+.emoji { font-size: 1.9rem; }
+.portal-card p { color: #4e5467; line-height: 1.5; font-size: 1.04rem; }
+
+.text-link { color: var(--teal); text-decoration: none; font-weight: 700; font-size: 1.1rem; }
+
+.back { color: var(--teal); text-decoration: none; font-weight: 700; }
+.step-tag { color: #4f816f; font-weight: 700; margin: .8rem 0 1.2rem; }
+
+label { display: block; font-weight: 600; margin: .75rem 0 .35rem; }
+input, select {
+  width: 100%;
+  border: 1px solid #d7dce6;
+  border-radius: 12px;
+  padding: .78rem;
+  background: #fff;
+  font: inherit;
+}
+
+.primary-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 12px;
+  padding: .86rem;
+  background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+.inline { max-width: 260px; margin: 1.2rem auto 0; }
+
+.stepper { display: flex; align-items: center; margin: .7rem 0 1rem; }
+.step {
+  width: 34px; height: 34px; border-radius: 999px; border: 1px solid #abc6bf;
+  display: grid; place-items: center; background: #fff; color: #3c6c61; font-weight: 700;
+}
+.step.active { background: var(--teal); color: #fff; border-color: var(--teal); }
+.line { flex: 1; height: 2px; background: #c5d6d2; }
+
+.success-badge {
+  width: 72px;
+  height: 72px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  margin: 0 auto;
+  background: #d9f4ec;
+}
+
+@media (max-width: 390px) {
+  .mobile-browser p { font-size: 1.6rem; }
+  h2 { font-size: 2.3rem; }
+}
