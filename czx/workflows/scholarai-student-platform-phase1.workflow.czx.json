@@ -1,0 +1,22 @@
+{
+  "format": "czx-workflow/v1",
+  "workflowName": "ScholarAi Student Platform Phase 1",
+  "school": "Unique College International School",
+  "app": "ScholarAi",
+  "modules": [
+    "Learning Hub",
+    "Assignments",
+    "Tests & Quizzes",
+    "Grades & Feedback",
+    "Attendance",
+    "Announcements"
+  ],
+  "journey": [
+    "Student login",
+    "Open learning hub",
+    "Start assessment",
+    "Activate secure mode",
+    "Submit work",
+    "View feedback"
+  ]
+}
