@@ -3,62 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ScholarAi | Student Platform</title>
+    <title>ScholarAi | Portal Select</title>
     <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
   </head>
-  <body>
-    <main class="app">
-      <section class="auth card" id="loginSection">
-        <span class="school">Unique College International School</span>
-        <h1>ScholarAi Student Login</h1>
-        <p>Use your Student ID and password to access your learning dashboard.</p>
-        <label for="studentId">Student ID</label>
-        <input id="studentId" value="UCIS-STU-001" />
-        <label for="password">Password</label>
-        <input id="password" type="password" value="student123" />
-        <button class="btn-primary" id="loginBtn">Login</button>
-      </section>
+  <body data-page="landing">
+    <div class="page-wrap">
+      <header class="mobile-browser">
+        <button class="circle-btn" aria-label="Close">✕</button>
+        <p>nacca-scholarai</p>
+        <button class="circle-btn" aria-label="Menu">⋯</button>
+      </header>
 
-      <section class="hidden" id="dashboardSection">
-        <header class="topbar card">
-          <div>
-            <p class="muted">Welcome back</p>
-            <h2 id="studentName">Amina Mensah</h2>
-            <p class="muted">Basic 7 • Student Platform • ScholarAi</p>
-          </div>
-          <button class="btn-soft" id="logoutBtn">Logout</button>
-        </header>
-
-        <section class="grid stats">
-          <article class="card stat"><p class="muted">Pending Assignments</p><p class="value" id="pendingCount">3</p></article>
-          <article class="card stat"><p class="muted">Upcoming Quizzes</p><p class="value">2</p></article>
-          <article class="card stat"><p class="muted">Average Score</p><p class="value">82%</p></article>
-          <article class="card stat"><p class="muted">Attendance</p><p class="value">96%</p></article>
-        </section>
-
-        <nav class="tabs" id="tabs"></nav>
-        <section class="card panel" id="panel"></section>
-
-        <p class="meta muted" id="workflowStatus">Loading workflow file...</p>
-      </section>
-
-      <section class="secure-overlay hidden" id="secureOverlay">
-        <div class="secure-box">
-          <h3>Secure Test Mode Active</h3>
-          <p>This is a web demo of exam protection. In production, this connects to device-level kiosk policies.</p>
-          <ul>
-            <li>Navigation, copy/paste, and tab switching are blocked by policy integration.</li>
-            <li>You must submit or request teacher exit code to leave exam mode.</li>
-            <li>Any suspicious action is logged in the student assessment report.</li>
-          </ul>
-          <div style="display:flex;gap:.6rem;">
-            <button class="btn-soft" id="submitQuizBtn">Submit Quiz</button>
-            <button class="btn-primary" id="exitSecureBtn">Exit Demo Mode</button>
-          </div>
+      <div class="brand-row">
+        <span class="ghana-bar" aria-hidden="true"></span>
+        <div>
+          <h1>ScholarAi</h1>
+          <p>NaCCA Curriculum</p>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <script src="./assets/scholarai-student-app.js"></script>
+      <main class="content">
+        <div class="tiny-flag" aria-hidden="true"></div>
+        <p class="pill">GHANA NaCCA STANDARDS-BASED CURRICULUM</p>
+        <h2>AI-Powered Assessment <span>Aligned to NaCCA</span></h2>
+        <p class="subtext">
+          Select your subject, strand, and year group from the Ghana NaCCA curriculum — then let AI generate exam-quality quizzes and teaching notes in seconds.
+        </p>
+
+        <section class="card-grid">
+          <article class="portal-card">
+            <div class="emoji">👩‍🏫</div>
+            <h3>Teacher Portal</h3>
+            <p>Create AI assessments, build lesson plans, and manage class progress for your learners.</p>
+            <a class="text-link" href="./login.html?role=teacher">Enter portal →</a>
+          </article>
+          <article class="portal-card">
+            <div class="emoji">🧑‍🎓</div>
+            <h3>Learner Portal</h3>
+            <p>Join quizzes, submit assignments, and see teacher feedback and attendance in one place.</p>
+            <a class="text-link" href="./login.html?role=learner">Enter portal →</a>
+          </article>
+        </section>
+      </main>
+    </div>
   </body>
 </html
