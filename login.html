@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Login</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="login">
+    <div class="page-wrap">
+      <main class="content split-top">
+        <a class="back" href="./index.html">← Back</a>
+        <div class="step-tag">Step 1 of 3 • Login</div>
+
+        <section class="auth-hero">
+          <h2 id="roleTitle">Portal Login</h2>
+          <p id="roleSubtitle" class="subtext">Sign in to continue.</p>
+        </section>
+
+        <form class="form-panel" id="loginForm">
+          <label for="userId">School User ID</label>
+          <input id="userId" required placeholder="UCIS-TCH-014" />
+
+          <label for="password">Password</label>
+          <input id="password" type="password" required placeholder="Enter password" />
+
+          <label for="schoolCode">School Code</label>
+          <input id="schoolCode" required placeholder="UNIQUE-COLLEGE" />
+
+          <button type="submit" class="primary-btn">Continue to KYC</button>
+        </form>
+      </main>
+    </div>
+    <script src="./assets/scholarai-student-app.js"></script>
+  </body>
+</html>
