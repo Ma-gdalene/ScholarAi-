@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | KYC Verification</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="kyc">
+    <div class="page-wrap">
+      <main class="content split-top">
+        <a class="back" id="backToLogin" href="./login.html">← Back to login</a>
+        <div class="step-tag">Step 2 of 3 • KYC Verification</div>
+
+        <h2>KYC Verification</h2>
+        <p class="subtext">Confirm identity before entering your portal.</p>
+
+        <div class="stepper">
+          <span class="step active">1</span><span class="line"></span>
+          <span class="step active">2</span><span class="line"></span>
+          <span class="step">3</span>
+        </div>
+
+        <form class="form-panel" id="kycForm">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" required placeholder="As shown in school records" />
+
+          <label for="dob">Date of Birth</label>
+          <input id="dob" type="date" required />
+
+          <label for="idType">ID Type</label>
+          <select id="idType" required>
+            <option value="">Select ID Type</option>
+            <option>School ID Card</option>
+            <option>Ghana Card</option>
+            <option>Passport</option>
+          </select>
+
+          <label for="idNumber">ID Number</label>
+          <input id="idNumber" required placeholder="ID Number" />
+
+          <label for="phone">Verification Phone</label>
+          <input id="phone" required placeholder="+233 XX XXX XXXX" />
+
+          <button type="submit" class="primary-btn">Send OTP</button>
+        </form>
+      </main>
+    </div>
+    <script src="./assets/scholarai-student-app.js"></script>
+  </body>
+</html>
