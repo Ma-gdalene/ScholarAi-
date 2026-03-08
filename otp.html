@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | OTP Verification</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="otp">
+    <div class="page-wrap">
+      <main class="content split-top">
+        <a class="back" id="backToKyc" href="./kyc.html">← Back to KYC</a>
+        <div class="step-tag">Step 3 of 3 • OTP Check</div>
+
+        <h2>Enter OTP Code</h2>
+        <p class="subtext">A one-time code was sent to your registered phone. Demo code: <strong>123456</strong>.</p>
+
+        <form class="form-panel" id="otpForm">
+          <label for="otp">6-digit code</label>
+          <input id="otp" maxlength="6" inputmode="numeric" placeholder="123456" required />
+          <button type="submit" class="primary-btn">Verify & Enter Portal</button>
+        </form>
+      </main>
+    </div>
+    <script src="./assets/scholarai-student-app.js"></script>
+  </body>
+</html>
