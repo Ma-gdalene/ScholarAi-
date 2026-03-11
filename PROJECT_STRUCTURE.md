@@ -8,6 +8,13 @@ This project intentionally uses folders plus multiple root HTML pages for clear 
 - `kyc.html` → KYC form page
 - `otp.html` → OTP check page
 - `success.html` → verification success page
+- `learner-dashboard.html` → learner command center
+- `teacher-dashboard.html` → teacher command center
+- `assignment-view.html` → assignment question interface
+- `results.html` → assignment results view
+- `progress.html` → learner analytics page
+- `student-insights.html` → teacher class analytics page
+- `content-library.html` → teacher reusable resources
 - `README.md` → setup/run instructions
 - `PROJECT_STRUCTURE.md` → this structure map
 
@@ -16,7 +23,8 @@ This project intentionally uses folders plus multiple root HTML pages for clear 
   - `deploy-pages.yml` → GitHub Pages deployment workflow
 - `assets/`
   - `scholarai-student-styles.css` → all UI styling
-  - `scholarai-student-app.js` → page flow logic and role handling
+  - `scholarai-student-app.js` → authentication/login page flow logic
+  - `post-kyc.js` → role guards, dashboard rendering, assignment/result flow
 - `czx/workflows/`
   - `scholarai-student-platform-phase1.workflow.czx.json` → machine-readable workflow
 - `docs/workflows/`
