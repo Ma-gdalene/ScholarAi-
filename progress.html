@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Progress Analytics</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="progress">
+    <div class="dashboard-container">
+      <header class="navbar">
+        <div><strong>Progress Analytics</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
+        <nav class="top-menu">
+          <a href="./learner-dashboard.html">Dashboard</a>
+          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+        </nav>
+      </header>
+      <aside class="sidebar">
+        <a href="./learner-dashboard.html">Dashboard</a>
+        <a href="./progress.html">Progress Analytics</a>
+      </aside>
+      <main class="main-content">
+        <section class="dashboard-card analytics-panel">
+          <h3>Total assignments completed</h3>
+          <p>18</p>
+          <h3>Average score</h3>
+          <p id="avgScoreVal"></p>
+          <h3>Subjects mastered</h3>
+          <p>Mathematics, English Language, Our World Our People</p>
+          <h3>Weak areas</h3>
+          <p>Equivalent Fractions, Ratio</p>
+        </section>
+        <section class="dashboard-card analytics-panel">
+          <h3>Subject performance chart</h3>
+          <div class="chart-bar"><span id="avgScoreBar">Average Score</span></div>
+          <h3>Topic mastery map</h3>
+          <div class="chart-bar"><span style="width:68%">Topic Mastery</span></div>
+          <h3>Weekly learning progress</h3>
+          <div class="chart-bar"><span id="completionBar">Completion</span></div>
+          <p>Completion rate: <span id="completionVal"></span></p>
+        </section>
+      </main>
+      <aside class="right-panel analytics-panel">
+        <h4>AI Recommendation</h4>
+        <p>Focus on fractions for 3 sessions this week for best score uplift.</p>
+      </aside>
+    </div>
+    <script src="./assets/post-kyc.js"></script>
+  </body>
+</html>
