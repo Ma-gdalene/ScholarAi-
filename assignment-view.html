@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Assignment View</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="assignment-view">
+    <div class="dashboard-container">
+      <header class="navbar">
+        <div><strong>Assignment Workspace</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
+        <nav class="top-menu">
+          <a href="./learner-dashboard.html">Dashboard</a>
+          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+        </nav>
+      </header>
+      <main class="main-content single-column">
+        <section class="dashboard-card">
+          <h3>Assignment Instructions</h3>
+          <p>Topic: Fractions word problems. Read each question and choose the best answer.</p>
+          <p><strong>Teacher Notes:</strong> Show your working and focus on equivalent fractions.</p>
+          <p id="questionProgress"></p>
+          <div class="assignment-card quiz-container">
+            <h4 id="questionText"></h4>
+            <div id="questionOptions"></div>
+          </div>
+          <div class="row-actions">
+            <button id="prevQuestion" class="ghost-button" type="button">Previous</button>
+            <button id="nextQuestion" class="ghost-button" type="button">Next</button>
+            <button id="submitAssignment" class="primary-button" type="button">Submit Assignment</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <button id="tutorToggle" class="tutor-fab">AI Tutor</button>
+    <div id="aiTutorPanel" class="ai-tutor-panel">
+      <h4>AI Support Assistant</h4>
+      <input id="tutorInput" placeholder="Request explanation" />
+      <button id="askTutorBtn" class="primary-button">Get Help</button>
+      <p id="tutorOutput" class="small-text">Ask for examples or concepts.</p>
+    </div>
+
+    <script src="./assets/post-kyc.js"></script>
+  </body>
+</html>
