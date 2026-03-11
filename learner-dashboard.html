@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Learner Dashboard</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="learner-dashboard">
+    <div class="dashboard-container">
+      <header class="navbar">
+        <div><strong>ScholarAi Learner</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
+        <nav class="top-menu">
+          <a href="./learner-dashboard.html">Dashboard</a>
+          <a href="./progress.html">Progress Analytics</a>
+          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <aside class="sidebar">
+        <a href="./learner-dashboard.html">Dashboard</a>
+        <a href="#">My Learning</a>
+        <a href="#">Assignments</a>
+        <a href="#">Practice Lab</a>
+        <a href="./progress.html">Progress Analytics</a>
+        <a href="#">Messages</a>
+        <a href="#">Profile</a>
+      </aside>
+
+      <main class="main-content">
+        <section class="dashboard-card">
+          <h3>Today's Learning Path</h3>
+          <p><strong>Subject:</strong> Mathematics</p>
+          <p><strong>Strand:</strong> Numbers</p>
+          <p><strong>Sub-strand:</strong> Fractions</p>
+          <p><strong>Goal:</strong> Understand equivalent fractions and apply them in word problems.</p>
+          <p><strong>Estimated completion:</strong> 45 minutes</p>
+          <div class="row-actions">
+            <button class="primary-button">Start Lesson</button>
+            <button class="ghost-button">Review Concepts</button>
+          </div>
+        </section>
+
+        <section class="dashboard-card">
+          <h3>Pending Assignments</h3>
+          <div id="assignmentList"></div>
+        </section>
+
+        <section class="dashboard-card">
+          <h3>AI Practice Lab</h3>
+          <div class="form-grid">
+            <select id="practiceSubject"><option>Mathematics</option><option>English Language</option></select>
+            <select id="practiceStrand"><option>Numbers</option><option>Algebra</option></select>
+            <select id="practiceDifficulty"><option>Easy</option><option selected>Medium</option><option>Hard</option></select>
+          </div>
+          <div class="row-actions">
+            <button id="generatePracticeBtn" class="primary-button">Generate Practice Set</button>
+            <button class="ghost-button">Save Practice Session</button>
+          </div>
+          <div id="practiceOutput"></div>
+        </section>
+
+        <section class="dashboard-card analytics-panel">
+          <h3>Performance Insights</h3>
+          <p>Topics mastered: 14</p>
+          <p>Topics struggling: Fractions, Ratio</p>
+          <p>Quiz average score: 82%</p>
+          <p>Completion rate: 76%</p>
+          <div class="chart-bar"><span style="width:78%">Topic Mastery Chart</span></div>
+          <div class="chart-bar"><span style="width:65%">Weekly Learning Streak</span></div>
+          <div class="chart-bar"><span style="width:82%">Score Trend</span></div>
+        </section>
+      </main>
+
+      <aside class="right-panel analytics-panel">
+        <h4>Notifications</h4>
+        <ul>
+          <li>Math assignment due today.</li>
+          <li>New quiz published by Mr. Boateng.</li>
+          <li>Attendance updated: Present.</li>
+        </ul>
+        <h4>AI Insights</h4>
+        <p>You improve fastest after short daily practice sessions (20 mins).</p>
+      </aside>
+    </div>
+
+    <button id="tutorToggle" class="tutor-fab">AI Tutor</button>
+    <div id="aiTutorPanel" class="ai-tutor-panel">
+      <h4>Ask AI Tutor</h4>
+      <input id="tutorInput" placeholder="Explain fractions" />
+      <button id="askTutorBtn" class="primary-button">Ask</button>
+      <p id="tutorOutput" class="small-text">Try: "Explain fractions".</p>
+    </div>
+
+    <script src="./assets/post-kyc.js"></script>
+  </body>
+</html>
