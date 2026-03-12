@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Student Insights</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="student-insights">
+    <div class="dashboard-container">
+      <header class="navbar">
+        <div><strong>Student Insights</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
+        <nav class="top-menu">
+          <a href="./teacher-dashboard.html">Dashboard</a>
+          <a href="./content-library.html">Content Library</a>
+          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <main class="main-content single-column">
+        <section class="dashboard-card analytics-panel">
+          <h3>Class Metrics</h3>
+          <p>Average class score: 74%</p>
+          <p>Most missed topics: Equivalent Fractions, Ratio</p>
+          <p>Top performing students: A. Mensah, K. Owusu, R. Asamoah</p>
+          <p>Students needing support: 8</p>
+          <div class="chart-bar"><span style="width:72%">Topic Difficulty Heatmap</span></div>
+          <div class="chart-bar"><span style="width:69%">Student Progress Trend</span></div>
+          <div class="chart-bar"><span style="width:64%">Assignment Completion Chart</span></div>
+        </section>
+      </main>
+    </div>
+    <script src="./assets/post-kyc.js"></script>
+  </body>
+</html>
