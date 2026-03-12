@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Results</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="results">
+    <div class="dashboard-container">
+      <header class="navbar">
+        <div><strong>Assignment Results</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
+        <nav class="top-menu">
+          <a href="./learner-dashboard.html">Dashboard</a>
+          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+        </nav>
+      </header>
+      <main class="main-content single-column">
+        <section class="dashboard-card">
+          <h3>Score Summary</h3>
+          <p><strong>Score Percentage:</strong> <span id="scorePercent">0%</span></p>
+          <p><strong>Correct Answers:</strong> <span id="correctAnswers">0</span></p>
+          <p><strong>Incorrect Answers:</strong> <span id="incorrectAnswers">0</span></p>
+          <p><strong>Teacher Feedback:</strong> <span id="teacherFeedback"></span></p>
+          <p><strong>AI Recommended Topics for Revision:</strong> <span id="aiRecommended"></span></p>
+          <div class="row-actions">
+            <button class="ghost-button" type="button">Review Answers</button>
+            <a class="primary-button" href="./learner-dashboard.html">Return to Dashboard</a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="./assets/post-kyc.js"></script>
+  </body>
+</html>
