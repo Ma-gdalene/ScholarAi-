@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarAi | Teacher Dashboard</title>
+    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
+  </head>
+  <body data-page="teacher-dashboard">
+    <div class="dashboard-container">
+      <header class="navbar">
+        <div><strong>ScholarAi Teacher</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
+        <nav class="top-menu">
+          <a href="./teacher-dashboard.html">Dashboard</a>
+          <a href="./student-insights.html">Student Insights</a>
+          <a href="./content-library.html">Content Library</a>
+          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <aside class="sidebar">
+        <a href="./teacher-dashboard.html">Dashboard</a>
+        <a href="#">Create Lesson</a>
+        <a href="#">Generate Quiz</a>
+        <a href="#">Assignments</a>
+        <a href="#">Classroom Manager</a>
+        <a href="./student-insights.html">Student Insights</a>
+        <a href="./content-library.html">Content Library</a>
+        <a href="#">Profile</a>
+      </aside>
+
+      <main class="main-content">
+        <section class="dashboard-card">
+          <h3>Quick Lesson Builder</h3>
+          <div class="form-grid">
+            <select id="lessonSubject"><option>Mathematics</option></select>
+            <select id="lessonStrand"><option>Numbers</option></select>
+            <select id="lessonSubStrand"><option>Fractions</option></select>
+            <select id="lessonYear"><option>Basic 7</option></select>
+            <select><option>45 Minutes</option><option>60 Minutes</option></select>
+          </div>
+          <button id="generateLessonBtn" class="primary-button">Generate Lesson</button>
+          <div class="row-actions">
+            <button class="ghost-button" type="button">Edit</button>
+            <button class="ghost-button" type="button">Save</button>
+            <button class="ghost-button" type="button">Assign to class</button>
+            <button class="ghost-button" type="button">Export</button>
+          </div>
+          <div id="lessonOutput"></div>
+        </section>
+
+        <section class="dashboard-card">
+          <h3>AI Quiz Generator</h3>
+          <div class="form-grid">
+            <select><option>Mathematics</option></select>
+            <select><option>Numbers</option></select>
+            <select><option>Fractions</option></select>
+            <select><option>Basic 7</option></select>
+            <select><option>10 Questions</option><option>20 Questions</option></select>
+            <select><option>Medium</option><option>Hard</option></select>
+          </div>
+          <button id="generateQuizBtn" class="primary-button">Generate Quiz</button>
+          <div id="quizOutput"></div>
+        </section>
+
+        <section class="dashboard-card">
+          <h3>Assignment Manager</h3>
+          <article class="assignment-card">
+            <h4>Fractions Homework Set 3</h4>
+            <p>Subject: Mathematics • Class: Basic 7A • Deadline: Friday</p>
+            <p>Completion: 64%</p>
+            <div class="row-actions">
+              <button class="ghost-button">Edit assignment</button>
+              <button class="ghost-button">Extend deadline</button>
+              <button class="ghost-button">View submissions</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="dashboard-card">
+          <h3>Classroom Manager</h3>
+          <div class="row-actions">
+            <button class="primary-button">Create class group</button>
+            <button class="ghost-button">Add students</button>
+            <button class="ghost-button">Import student list</button>
+            <button class="ghost-button">Assign lessons</button>
+          </div>
+        </section>
+      </main>
+
+      <aside class="right-panel analytics-panel">
+        <h4>NaCCA Alignment Engine</h4>
+        <p>All generated content follows:</p>
+        <ul>
+          <li>Subject</li>
+          <li>Strand</li>
+          <li>Sub-strand</li>
+          <li>Indicator</li>
+          <li>Learning outcome</li>
+        </ul>
+      </aside>
+    </div>
+
+    <script src="./assets/post-kyc.js"></script>
+  </body>
+</html>
