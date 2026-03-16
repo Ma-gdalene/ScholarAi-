@@ -13,10 +13,16 @@ const roleProfiles = {
 
 function persistSession(stage = "login") {
   const profile = roleProfiles[role] || roleProfiles.learner;
+  const loginNameInput = document.getElementById("loginName");
+  const userIdInput = document.getElementById("userId");
+
+  const userName = loginNameInput?.value.trim() || localStorage.getItem("userName") || profile.userName;
+  const userID = userIdInput?.value.trim() || localStorage.getItem("userID") || profile.userID;
+
   localStorage.setItem("scholar_role", role);
   localStorage.setItem("userRole", role);
-  localStorage.setItem("userID", profile.userID);
-  localStorage.setItem("userName", profile.userName);
+  localStorage.setItem("userID", userID);
+  localStorage.setItem("userName", userName);
   localStorage.setItem("kycStatus", stage === "verified" ? "verified" : "pending");
 }
 
@@ -27,30 +33,24 @@ function setRoleCopy() {
   const successMessage = document.getElementById("successMessage");
   const successCta = document.getElementById("successCta");
 
-  if (title) {
-    title.textContent = `${roleLabel} Login`;
-  }
+  if (title) title.textContent = `${roleLabel} Login`;
   if (subtitle) {
     subtitle.textContent = role === "teacher"
       ? "Sign in with staff credentials to continue to identity verification."
       : "Sign in with learner credentials to continue to identity verification.";
   }
-  if (successTitle) {
-    successTitle.textContent = `${roleLabel} Verification Complete`;
-  }
-  if (successMessage) {
-    successMessage.textContent = `KYC approved. ${roleLabel} portal access is now unlocked.`;
-  }
-  if (successCta) {
-    successCta.href = role === "teacher" ? "./teacher-dashboard.html" : "./learner-dashboard.html";
-  }
+  if (successTitle) successTitle.textContent = `${roleLabel} Verification Complete`;
+  if (successMessage) successMessage.textContent = `KYC approved. ${roleLabel} portal access is now unlocked.`;
+  if (successCta) successCta.href = role === "teacher" ? "./teacher-dashboard.html" : "./learner-dashboard.html";
 }
 
-
 function prefillDemoValues() {
+  const loginName = document.getElementById("loginName");
   const userId = document.getElementById("userId");
   const password = document.getElementById("password");
   const schoolCode = document.getElementById("schoolCode");
+
+  if (loginName && !loginName.value) loginName.value = role === "teacher" ? "Mr. Kofi Mensah" : "Amina Mensah";
   if (userId && !userId.value) userId.value = role === "teacher" ? "UCIS-TCH-001" : "UCIS-STU-001";
   if (password && !password.value) password.value = "demo123";
   if (schoolCode && !schoolCode.value) schoolCode.value = "UNIQUE-COLLEGE";
@@ -60,8 +60,9 @@ function prefillDemoValues() {
   const idType = document.getElementById("idType");
   const idNumber = document.getElementById("idNumber");
   const phone = document.getElementById("phone");
-  if (fullName && !fullName.value) fullName.value = role === "teacher" ? "Ama Boateng" : "Amina Mensah";
-  if (dob && !dob.value) dob.value = role === "teacher" ? "1993-05-12" : "2011-07-18";
+
+  if (fullName && !fullName.value) fullName.value = role === "teacher" ? "Kofi Mensah" : "Amina Mensah";
+  if (dob && !dob.value) dob.value = role === "teacher" ? "1990-06-11" : "2011-07-18";
   if (idType && !idType.value) idType.value = "School ID Card";
   if (idNumber && !idNumber.value) idNumber.value = role === "teacher" ? "TCH-8821" : "STU-4472";
   if (phone && !phone.value) phone.value = "+233 24 000 0000";
@@ -73,7 +74,6 @@ function prefillDemoValues() {
 function wireBackLinks() {
   const backToLogin = document.getElementById("backToLogin");
   const backToKyc = document.getElementById("backToKyc");
-
   if (backToLogin) backToLogin.href = appendRole("./login.html");
   if (backToKyc) backToKyc.href = appendRole("./kyc.html");
 }
@@ -82,11 +82,12 @@ const loginForm = document.getElementById("loginForm");
 if (loginForm) {
   loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const loginName = document.getElementById("loginName").value.trim();
     const userId = document.getElementById("userId").value.trim();
     const password = document.getElementById("password").value.trim();
     const schoolCode = document.getElementById("schoolCode").value.trim();
 
-    if (!userId || !password || !schoolCode) {
+    if (!loginName || !userId || !password || !schoolCode) {
       alert("Please complete all login fields.");
       return;
     }
@@ -100,7 +101,6 @@ const kycForm = document.getElementById("kycForm");
 if (kycForm) {
   kycForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
     const requiredIds = ["fullName", "dob", "idType", "idNumber", "phone"];
     const missing = requiredIds.some((id) => !document.getElementById(id).value.trim());
     if (missing) {
@@ -122,6 +122,7 @@ if (otpForm) {
       alert("Invalid OTP. Please use demo code 123456.");
       return;
     }
+
     persistSession("verified");
     window.location.href = appendRole("./success.html");
   });
@@ -129,6 +130,4 @@ if (otpForm) {
 
 setRoleCopy();
 wireBackLinks();
-
-
 prefillDemoValues();
