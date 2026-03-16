@@ -1,139 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ScholarAi | Learner Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
-  </head>
-  <body data-page="learner-dashboard" class="bg-slate-100 text-slate-800">
-    <div class="min-h-screen grid lg:grid-cols-[260px_1fr_320px] grid-cols-1 lg:grid-rows-[72px_1fr]">
-      <header class="lg:col-span-3 bg-white border-b border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold">ScholarAi • Learner Portal</p>
-          <h1 class="text-lg font-bold"><span id="sessionUserName"></span> <span class="text-sm text-slate-500">(<span id="sessionUserID"></span>)</span></h1>
-        </div>
-        <nav class="flex items-center gap-2 text-sm">
-          <a class="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 font-medium" href="./learner-dashboard.html">Dashboard</a>
-          <a class="px-3 py-1.5 rounded-full hover:bg-slate-100" href="./progress.html">Progress Analytics</a>
-          <button data-action="logout" class="px-3 py-1.5 rounded-full bg-slate-900 text-white">Logout</button>
-        </nav>
-      </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScholarAI | Learner Dashboard</title>
 
-      <aside class="hidden lg:block bg-slate-950 text-slate-100 p-4 space-y-2">
-        <a class="block px-3 py-2 rounded-lg bg-slate-800" href="./learner-dashboard.html">Dashboard</a>
-        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">My Learning</a>
-        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Assignments</a>
-        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Practice Lab</a>
-        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="./progress.html">Progress Analytics</a>
-        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Messages</a>
-        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Profile</a>
-      </aside>
+<script src="https://cdn.tailwindcss.com"></script>
 
-      <main class="p-4 space-y-4">
-        <section class="grid md:grid-cols-4 gap-3">
-          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Assignments</p><p class="text-2xl font-bold">6</p></div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Quiz Average</p><p class="text-2xl font-bold text-emerald-700">82%</p></div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Learning Streak</p><p class="text-2xl font-bold">11 days</p></div>
-          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Completion Rate</p><p class="text-2xl font-bold">76%</p></div>
-        </section>
+</head>
 
-        <section class="grid xl:grid-cols-2 gap-4">
-          <article class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-            <h3 class="text-lg font-bold">Today's Learning Path</h3>
-            <p class="text-sm text-slate-500 mt-1">Mathematics • Strand: Numbers • Sub-strand: Fractions</p>
-            <p class="mt-3">Goal: Understand equivalent fractions and apply them in word problems.</p>
-            <p class="text-sm text-slate-500 mt-1">Estimated completion: 45 minutes</p>
-            <div class="flex gap-2 mt-3">
-              <button class="px-4 py-2 rounded-lg bg-emerald-600 text-white">Start Lesson</button>
-              <button class="px-4 py-2 rounded-lg border border-slate-300">Review Concepts</button>
-            </div>
-          </article>
+<body class="bg-slate-100 text-slate-800">
 
-          <article class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-            <h3 class="text-lg font-bold">Pending Assignments</h3>
-            <div id="assignmentList" class="mt-3 space-y-2"></div>
-          </article>
-        </section>
+<div class="min-h-screen grid lg:grid-cols-[260px_1fr_320px] grid-cols-1 lg:grid-rows-[72px_1fr]">
 
-        <section class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <h3 class="text-lg font-bold">AI Practice Lab (GES NaCCA Curriculum)</h3>
-          <div class="grid md:grid-cols-5 gap-2 mt-3">
-            <select id="practiceGrade" class="border rounded-lg px-3 py-2"></select>
-            <select id="practiceSubject" class="border rounded-lg px-3 py-2"></select>
-            <select id="practiceStrand" class="border rounded-lg px-3 py-2"></select>
-            <select id="practiceSubStrand" class="border rounded-lg px-3 py-2"></select>
-            <select id="practiceDifficulty" class="border rounded-lg px-3 py-2">
-              <option>Easy</option><option selected>Medium</option><option>Hard</option>
-            </select>
-          </div>
-          <div class="flex gap-2 mt-3">
-            <button id="generatePracticeBtn" class="px-4 py-2 rounded-lg bg-emerald-600 text-white">Generate Practice Set</button>
-            <button class="px-4 py-2 rounded-lg border border-slate-300">Save Practice Session</button>
-          </div>
-          <div id="practiceOutput" class="mt-3"></div>
-        </section>
+<header class="lg:col-span-3 bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
 
-        <section class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
-          <h3 class="text-lg font-bold">Performance Insights</h3>
-          <div class="grid md:grid-cols-2 gap-4 mt-3">
-            <div>
-              <p>Topics mastered: 14</p>
-              <p>Topics struggling: Fractions, Ratio</p>
-              <p>Quiz average score: 82%</p>
-              <p>Completion rate: 76%</p>
-            </div>
-            <div class="space-y-2">
-              <div class="h-6 rounded-full bg-slate-200"><div class="h-6 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-xs text-white pl-3 flex items-center" style="width:78%">Topic Mastery</div></div>
-              <div class="h-6 rounded-full bg-slate-200"><div class="h-6 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-xs text-white pl-3 flex items-center" style="width:65%">Weekly Streak</div></div>
-              <div class="h-6 rounded-full bg-slate-200"><div class="h-6 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-xs text-white pl-3 flex items-center" style="width:82%">Score Trend</div></div>
-            </div>
-          </div>
-        </section>
-      </main>
+<div>
+<p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold">
+ScholarAI • Learner Portal
+</p>
 
-      <aside class="hidden lg:block p-4 border-l border-slate-200 bg-white space-y-4">
-        <div class="rounded-xl border border-slate-200 p-3">
-          <h4 class="font-semibold">Notifications</h4>
-          <ul class="text-sm mt-2 list-disc pl-4 space-y-1">
-            <li>Math assignment due today.</li>
-            <li>New quiz published by Mr. Boateng.</li>
-            <li>Attendance updated: Present.</li>
-          </ul>
-        </div>
-        <div class="rounded-xl border border-slate-200 p-3">
-          <h4 class="font-semibold">AI Insights</h4>
-          <p class="text-sm mt-2">You improve fastest after short daily practice sessions (20 mins).</p>
-        </div>
-      </aside>
-    </div>
+<h1 class="text-lg font-bold">
+Learner Dashboard
+</h1>
+</div>
 
-    <button id="tutorToggle" class="fixed bottom-5 right-5 px-4 py-2 rounded-full bg-emerald-600 text-white shadow-lg">AI Tutor</button>
-    <div id="aiTutorPanel" class="hidden fixed bottom-20 right-5 w-[340px] max-w-[92vw] bg-white border border-slate-200 rounded-2xl p-3 shadow-2xl">
-      <h4 class="font-semibold">Ask AI Tutor</h4>
-      <input id="tutorInput" class="w-full mt-2 border rounded-lg px-3 py-2" placeholder="Explain fractions with examples" />
-      <button id="askTutorBtn" class="w-full mt-2 px-4 py-2 rounded-lg bg-emerald-600 text-white">Ask</button>
-      <p id="tutorOutput" class="text-sm text-slate-600 mt-2">Try: "Explain fractions" or "Give me a Basic 8 algebra example".</p>
-    </div>
+</header>
 
-    <script src="./assets/post-kyc.js"></script>
+<aside class="hidden lg:block bg-slate-950 text-slate-100 p-4 space-y-2">
+
+<a class="block px-3 py-2 rounded-lg bg-slate-800">Dashboard</a>
+<a class="block px-3 py-2 rounded-lg hover:bg-slate-800">My Learning</a>
+<a class="block px-3 py-2 rounded-lg hover:bg-slate-800">Assignments</a>
+<a class="block px-3 py-2 rounded-lg hover:bg-slate-800">Practice Lab</a>
+
+</aside>
+
+<main class="p-4 space-y-6">
+
+<section class="grid md:grid-cols-4 gap-3">
+
+<div class="bg-white rounded-2xl border border-slate-200 p-4">
+<p class="text-sm text-slate-500">Assignments</p>
+<p class="text-2xl font-bold">6</p>
+</div>
+
+<div class="bg-white rounded-2xl border border-slate-200 p-4">
+<p class="text-sm text-slate-500">Quiz Average</p>
+<p class="text-2xl font-bold text-emerald-700">82%</p>
+</div>
+
+<div class="bg-white rounded-2xl border border-slate-200 p-4">
+<p class="text-sm text-slate-500">Learning Streak</p>
+<p class="text-2xl font-bold">11 days</p>
+</div>
+
+<div class="bg-white rounded-2xl border border-slate-200 p-4">
+<p class="text-sm text-slate-500">Completion Rate</p>
+<p class="text-2xl font-bold">76%</p>
+</div>
+
+</section>
+
+<section class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+
+<h3 class="text-lg font-bold">
+AI Practice Lab
+</h3>
+
+<div class="grid md:grid-cols-5 gap-2 mt-3">
+
+<select id="practiceGrade" class="border rounded-lg px-3 py-2"></select>
+
+<select id="practiceSubject" class="border rounded-lg px-3 py-2"></select>
+
+<select id="practiceStrand" class="border rounded-lg px-3 py-2"></select>
+
+<select id="practiceSubStrand" class="border rounded-lg px-3 py-2"></select>
+
+<select id="practiceDifficulty" class="border rounded-lg px-3 py-2">
+<option>Easy</option>
+<option selected>Medium</option>
+<option>Hard</option>
+</select>
+
+</div>
+
+<div class="flex gap-2 mt-3">
+
+<button id="generatePracticeBtn"
+class="px-4 py-2 rounded-lg bg-emerald-600 text-white">
+Generate Practice
+</button>
+
+</div>
+
+<div id="practiceOutput" class="mt-4"></div>
+
+</section>
+
+</main>
+
+</div>
+
 <script>
 
-const gradeSelect = document.getElementById("practiceGrade");
-const subjectSelect = document.getElementById("practiceSubject");
-const strandSelect = document.getElementById("practiceStrand");
-const subStrandSelect = document.getElementById("practiceSubStrand");
+/* ===============================
+CURRICULUM DATABASE
+================================ */
+
+const scholarCurriculum = {
+
+Basic1:{
+Mathematics:{
+Numbers:["Counting","Addition","Subtraction"],
+Geometry:["Shapes","Position"]
+},
+English:{
+Reading:["Alphabet sounds","Simple sentences"],
+Grammar:["Nouns","Pronouns","Verbs"]
+},
+Science:{
+LivingThings:["Plants","Animals","Humans"]
+}
+},
+
+Basic2:{
+Mathematics:{
+Numbers:["Addition","Subtraction"],
+Measurement:["Length","Time"]
+},
+English:{
+Reading:["Paragraph reading"],
+Grammar:["Tenses","Pronouns"]
+}
+},
+
+Basic3:{
+Mathematics:{
+Numbers:["Multiplication","Division"],
+Fractions:["Simple fractions"]
+},
+Science:{
+HumanBody:["Senses","Nutrition"]
+}
+},
+
+Basic7:{
+Mathematics:{
+Algebra:["Expressions","Equations"],
+Geometry:["Angles","Triangles"]
+},
+IntegratedScience:{
+Biology:["Cells","Plants"],
+Physics:["Force","Motion"]
+}
+},
+
+Basic8:{
+Mathematics:{
+Numbers:["Fractions","Ratio","Percentages"],
+Algebra:["Linear equations"]
+},
+IntegratedScience:{
+Biology:["Digestive system"],
+Physics:["Energy","Work"]
+}
+}
+
+};
+
+/* ===============================
+DROPDOWN REFERENCES
+================================ */
+
+const gradeSelect=document.getElementById("practiceGrade");
+const subjectSelect=document.getElementById("practiceSubject");
+const strandSelect=document.getElementById("practiceStrand");
+const topicSelect=document.getElementById("practiceSubStrand");
+
+/* ===============================
+LOAD GRADES
+================================ */
 
 function loadGrades(){
 
 gradeSelect.innerHTML="";
 
-scholarCurriculum.levels.forEach(level=>{
+Object.keys(scholarCurriculum).forEach(grade=>{
 
-const option=document.createElement("option");
-option.value=level;
-option.textContent=level;
+let option=document.createElement("option");
+option.value=grade;
+option.textContent=grade;
 
 gradeSelect.appendChild(option);
 
@@ -142,17 +200,21 @@ gradeSelect.appendChild(option);
 loadSubjects();
 }
 
+/* ===============================
+LOAD SUBJECTS
+================================ */
+
 function loadSubjects(){
 
 subjectSelect.innerHTML="";
 strandSelect.innerHTML="";
-subStrandSelect.innerHTML="";
+topicSelect.innerHTML="";
 
-const subjects = scholarCurriculum.subjects[gradeSelect.value];
+let subjects=scholarCurriculum[gradeSelect.value];
 
 Object.keys(subjects).forEach(subject=>{
 
-const option=document.createElement("option");
+let option=document.createElement("option");
 option.value=subject;
 option.textContent=subject;
 
@@ -163,16 +225,20 @@ subjectSelect.appendChild(option);
 loadStrands();
 }
 
+/* ===============================
+LOAD STRANDS
+================================ */
+
 function loadStrands(){
 
 strandSelect.innerHTML="";
-subStrandSelect.innerHTML="";
+topicSelect.innerHTML="";
 
-const strands = scholarCurriculum.subjects[gradeSelect.value][subjectSelect.value];
+let strands=scholarCurriculum[gradeSelect.value][subjectSelect.value];
 
 Object.keys(strands).forEach(strand=>{
 
-const option=document.createElement("option");
+let option=document.createElement("option");
 option.value=strand;
 option.textContent=strand;
 
@@ -183,23 +249,33 @@ strandSelect.appendChild(option);
 loadTopics();
 }
 
+/* ===============================
+LOAD TOPICS
+================================ */
+
 function loadTopics(){
 
-subStrandSelect.innerHTML="";
+topicSelect.innerHTML="";
 
-const topics = scholarCurriculum.subjects[gradeSelect.value][subjectSelect.value][strandSelect.value];
+let topics=scholarCurriculum
+[gradeSelect.value]
+[subjectSelect.value]
+[strandSelect.value];
 
 topics.forEach(topic=>{
 
-const option=document.createElement("option");
+let option=document.createElement("option");
 option.value=topic;
 option.textContent=topic;
 
-subStrandSelect.appendChild(option);
+topicSelect.appendChild(option);
 
 });
-
 }
+
+/* ===============================
+EVENTS
+================================ */
 
 gradeSelect.addEventListener("change",loadSubjects);
 subjectSelect.addEventListener("change",loadStrands);
@@ -207,7 +283,44 @@ strandSelect.addEventListener("change",loadTopics);
 
 loadGrades();
 
+/* ===============================
+QUIZ GENERATOR
+================================ */
+
+document
+.getElementById("generatePracticeBtn")
+.addEventListener("click",()=>{
+
+let topic=topicSelect.value;
+
+let output=document.getElementById("practiceOutput");
+
+let html="";
+
+for(let i=1;i<=5;i++){
+
+html+=`
+
+<div class="border rounded-xl p-3 mt-2">
+
+<p class="font-semibold">
+Q${i}: Explain or solve a question about <b>${topic}</b>
+</p>
+
+<input class="border rounded w-full mt-2 px-3 py-2"
+placeholder="Your answer">
+
+</div>
+
+`;
+
+}
+
+output.innerHTML=html;
+
+});
+
 </script>
-<script src="./curriculum-database.js"></script>
-  </body>
+
+</body>
 </html>
