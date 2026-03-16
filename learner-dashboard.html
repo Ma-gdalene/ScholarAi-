@@ -4,92 +4,117 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ScholarAi | Learner Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./assets/scholarai-student-styles.css" />
   </head>
-  <body data-page="learner-dashboard">
-    <div class="dashboard-container">
-      <header class="navbar">
-        <div><strong>ScholarAi Learner</strong> • <span id="sessionUserName"></span> (<span id="sessionUserID"></span>)</div>
-        <nav class="top-menu">
-          <a href="./learner-dashboard.html">Dashboard</a>
-          <a href="./progress.html">Progress Analytics</a>
-          <button data-action="logout" class="ghost-button" type="button">Logout</button>
+  <body data-page="learner-dashboard" class="bg-slate-100 text-slate-800">
+    <div class="min-h-screen grid lg:grid-cols-[260px_1fr_320px] grid-cols-1 lg:grid-rows-[72px_1fr]">
+      <header class="lg:col-span-3 bg-white border-b border-slate-200 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p class="text-xs uppercase tracking-wider text-emerald-700 font-semibold">ScholarAi • Learner Portal</p>
+          <h1 class="text-lg font-bold"><span id="sessionUserName"></span> <span class="text-sm text-slate-500">(<span id="sessionUserID"></span>)</span></h1>
+        </div>
+        <nav class="flex items-center gap-2 text-sm">
+          <a class="px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 font-medium" href="./learner-dashboard.html">Dashboard</a>
+          <a class="px-3 py-1.5 rounded-full hover:bg-slate-100" href="./progress.html">Progress Analytics</a>
+          <button data-action="logout" class="px-3 py-1.5 rounded-full bg-slate-900 text-white">Logout</button>
         </nav>
       </header>
 
-      <aside class="sidebar">
-        <a href="./learner-dashboard.html">Dashboard</a>
-        <a href="#">My Learning</a>
-        <a href="#">Assignments</a>
-        <a href="#">Practice Lab</a>
-        <a href="./progress.html">Progress Analytics</a>
-        <a href="#">Messages</a>
-        <a href="#">Profile</a>
+      <aside class="hidden lg:block bg-slate-950 text-slate-100 p-4 space-y-2">
+        <a class="block px-3 py-2 rounded-lg bg-slate-800" href="./learner-dashboard.html">Dashboard</a>
+        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">My Learning</a>
+        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Assignments</a>
+        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Practice Lab</a>
+        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="./progress.html">Progress Analytics</a>
+        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Messages</a>
+        <a class="block px-3 py-2 rounded-lg hover:bg-slate-800" href="#">Profile</a>
       </aside>
 
-      <main class="main-content">
-        <section class="dashboard-card">
-          <h3>Today's Learning Path</h3>
-          <p><strong>Subject:</strong> Mathematics</p>
-          <p><strong>Strand:</strong> Numbers</p>
-          <p><strong>Sub-strand:</strong> Fractions</p>
-          <p><strong>Goal:</strong> Understand equivalent fractions and apply them in word problems.</p>
-          <p><strong>Estimated completion:</strong> 45 minutes</p>
-          <div class="row-actions">
-            <button class="primary-button">Start Lesson</button>
-            <button class="ghost-button">Review Concepts</button>
-          </div>
+      <main class="p-4 space-y-4">
+        <section class="grid md:grid-cols-4 gap-3">
+          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Assignments</p><p class="text-2xl font-bold">6</p></div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Quiz Average</p><p class="text-2xl font-bold text-emerald-700">82%</p></div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Learning Streak</p><p class="text-2xl font-bold">11 days</p></div>
+          <div class="bg-white rounded-2xl border border-slate-200 p-4"><p class="text-sm text-slate-500">Completion Rate</p><p class="text-2xl font-bold">76%</p></div>
         </section>
 
-        <section class="dashboard-card">
-          <h3>Pending Assignments</h3>
-          <div id="assignmentList"></div>
+        <section class="grid xl:grid-cols-2 gap-4">
+          <article class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+            <h3 class="text-lg font-bold">Today's Learning Path</h3>
+            <p class="text-sm text-slate-500 mt-1">Mathematics • Strand: Numbers • Sub-strand: Fractions</p>
+            <p class="mt-3">Goal: Understand equivalent fractions and apply them in word problems.</p>
+            <p class="text-sm text-slate-500 mt-1">Estimated completion: 45 minutes</p>
+            <div class="flex gap-2 mt-3">
+              <button class="px-4 py-2 rounded-lg bg-emerald-600 text-white">Start Lesson</button>
+              <button class="px-4 py-2 rounded-lg border border-slate-300">Review Concepts</button>
+            </div>
+          </article>
+
+          <article class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+            <h3 class="text-lg font-bold">Pending Assignments</h3>
+            <div id="assignmentList" class="mt-3 space-y-2"></div>
+          </article>
         </section>
 
-        <section class="dashboard-card">
-          <h3>AI Practice Lab</h3>
-          <div class="form-grid">
-            <select id="practiceSubject"><option>Mathematics</option><option>English Language</option></select>
-            <select id="practiceStrand"><option>Numbers</option><option>Algebra</option></select>
-            <select id="practiceDifficulty"><option>Easy</option><option selected>Medium</option><option>Hard</option></select>
+        <section class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+          <h3 class="text-lg font-bold">AI Practice Lab (GES NaCCA Curriculum)</h3>
+          <div class="grid md:grid-cols-5 gap-2 mt-3">
+            <select id="practiceGrade" class="border rounded-lg px-3 py-2"></select>
+            <select id="practiceSubject" class="border rounded-lg px-3 py-2"></select>
+            <select id="practiceStrand" class="border rounded-lg px-3 py-2"></select>
+            <select id="practiceSubStrand" class="border rounded-lg px-3 py-2"></select>
+            <select id="practiceDifficulty" class="border rounded-lg px-3 py-2">
+              <option>Easy</option><option selected>Medium</option><option>Hard</option>
+            </select>
           </div>
-          <div class="row-actions">
-            <button id="generatePracticeBtn" class="primary-button">Generate Practice Set</button>
-            <button class="ghost-button">Save Practice Session</button>
+          <div class="flex gap-2 mt-3">
+            <button id="generatePracticeBtn" class="px-4 py-2 rounded-lg bg-emerald-600 text-white">Generate Practice Set</button>
+            <button class="px-4 py-2 rounded-lg border border-slate-300">Save Practice Session</button>
           </div>
-          <div id="practiceOutput"></div>
+          <div id="practiceOutput" class="mt-3"></div>
         </section>
 
-        <section class="dashboard-card analytics-panel">
-          <h3>Performance Insights</h3>
-          <p>Topics mastered: 14</p>
-          <p>Topics struggling: Fractions, Ratio</p>
-          <p>Quiz average score: 82%</p>
-          <p>Completion rate: 76%</p>
-          <div class="chart-bar"><span style="width:78%">Topic Mastery Chart</span></div>
-          <div class="chart-bar"><span style="width:65%">Weekly Learning Streak</span></div>
-          <div class="chart-bar"><span style="width:82%">Score Trend</span></div>
+        <section class="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
+          <h3 class="text-lg font-bold">Performance Insights</h3>
+          <div class="grid md:grid-cols-2 gap-4 mt-3">
+            <div>
+              <p>Topics mastered: 14</p>
+              <p>Topics struggling: Fractions, Ratio</p>
+              <p>Quiz average score: 82%</p>
+              <p>Completion rate: 76%</p>
+            </div>
+            <div class="space-y-2">
+              <div class="h-6 rounded-full bg-slate-200"><div class="h-6 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-xs text-white pl-3 flex items-center" style="width:78%">Topic Mastery</div></div>
+              <div class="h-6 rounded-full bg-slate-200"><div class="h-6 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-xs text-white pl-3 flex items-center" style="width:65%">Weekly Streak</div></div>
+              <div class="h-6 rounded-full bg-slate-200"><div class="h-6 rounded-full bg-gradient-to-r from-emerald-500 to-blue-600 text-xs text-white pl-3 flex items-center" style="width:82%">Score Trend</div></div>
+            </div>
+          </div>
         </section>
       </main>
 
-      <aside class="right-panel analytics-panel">
-        <h4>Notifications</h4>
-        <ul>
-          <li>Math assignment due today.</li>
-          <li>New quiz published by Mr. Boateng.</li>
-          <li>Attendance updated: Present.</li>
-        </ul>
-        <h4>AI Insights</h4>
-        <p>You improve fastest after short daily practice sessions (20 mins).</p>
+      <aside class="hidden lg:block p-4 border-l border-slate-200 bg-white space-y-4">
+        <div class="rounded-xl border border-slate-200 p-3">
+          <h4 class="font-semibold">Notifications</h4>
+          <ul class="text-sm mt-2 list-disc pl-4 space-y-1">
+            <li>Math assignment due today.</li>
+            <li>New quiz published by Mr. Boateng.</li>
+            <li>Attendance updated: Present.</li>
+          </ul>
+        </div>
+        <div class="rounded-xl border border-slate-200 p-3">
+          <h4 class="font-semibold">AI Insights</h4>
+          <p class="text-sm mt-2">You improve fastest after short daily practice sessions (20 mins).</p>
+        </div>
       </aside>
     </div>
 
-    <button id="tutorToggle" class="tutor-fab">AI Tutor</button>
-    <div id="aiTutorPanel" class="ai-tutor-panel">
-      <h4>Ask AI Tutor</h4>
-      <input id="tutorInput" placeholder="Explain fractions" />
-      <button id="askTutorBtn" class="primary-button">Ask</button>
-      <p id="tutorOutput" class="small-text">Try: "Explain fractions".</p>
+    <button id="tutorToggle" class="fixed bottom-5 right-5 px-4 py-2 rounded-full bg-emerald-600 text-white shadow-lg">AI Tutor</button>
+    <div id="aiTutorPanel" class="hidden fixed bottom-20 right-5 w-[340px] max-w-[92vw] bg-white border border-slate-200 rounded-2xl p-3 shadow-2xl">
+      <h4 class="font-semibold">Ask AI Tutor</h4>
+      <input id="tutorInput" class="w-full mt-2 border rounded-lg px-3 py-2" placeholder="Explain fractions with examples" />
+      <button id="askTutorBtn" class="w-full mt-2 px-4 py-2 rounded-lg bg-emerald-600 text-white">Ask</button>
+      <p id="tutorOutput" class="text-sm text-slate-600 mt-2">Try: "Explain fractions" or "Give me a Basic 8 algebra example".</p>
     </div>
 
     <script src="./assets/post-kyc.js"></script>
