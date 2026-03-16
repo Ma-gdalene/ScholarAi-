@@ -6,11 +6,26 @@ function appendRole(path) {
   return `${path}?role=${role}`;
 }
 
+const roleProfiles = {
+  teacher: { userID: "UCIS-TCH-001", userName: "Mr. Kofi Mensah" },
+  learner: { userID: "UCIS-STU-001", userName: "Amina Mensah" }
+};
+
+function persistSession(stage = "login") {
+  const profile = roleProfiles[role] || roleProfiles.learner;
+  localStorage.setItem("scholar_role", role);
+  localStorage.setItem("userRole", role);
+  localStorage.setItem("userID", profile.userID);
+  localStorage.setItem("userName", profile.userName);
+  localStorage.setItem("kycStatus", stage === "verified" ? "verified" : "pending");
+}
+
 function setRoleCopy() {
   const title = document.getElementById("roleTitle");
   const subtitle = document.getElementById("roleSubtitle");
   const successTitle = document.getElementById("successTitle");
   const successMessage = document.getElementById("successMessage");
+  const successCta = document.getElementById("successCta");
 
   if (title) {
     title.textContent = `${roleLabel} Login`;
@@ -25,6 +40,9 @@ function setRoleCopy() {
   }
   if (successMessage) {
     successMessage.textContent = `KYC approved. ${roleLabel} portal access is now unlocked.`;
+  }
+  if (successCta) {
+    successCta.href = role === "teacher" ? "./teacher-dashboard.html" : "./learner-dashboard.html";
   }
 }
 
@@ -73,7 +91,7 @@ if (loginForm) {
       return;
     }
 
-    localStorage.setItem("scholar_role", role);
+    persistSession("login");
     window.location.href = appendRole("./kyc.html");
   });
 }
@@ -90,6 +108,7 @@ if (kycForm) {
       return;
     }
 
+    persistSession("kyc");
     window.location.href = appendRole("./otp.html");
   });
 }
@@ -103,6 +122,7 @@ if (otpForm) {
       alert("Invalid OTP. Please use demo code 123456.");
       return;
     }
+    persistSession("verified");
     window.location.href = appendRole("./success.html");
   });
 }
