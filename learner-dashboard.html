@@ -118,6 +118,96 @@
     </div>
 
     <script src="./assets/post-kyc.js"></script>
+<script>
+
+const gradeSelect = document.getElementById("practiceGrade");
+const subjectSelect = document.getElementById("practiceSubject");
+const strandSelect = document.getElementById("practiceStrand");
+const subStrandSelect = document.getElementById("practiceSubStrand");
+
+function loadGrades(){
+
+gradeSelect.innerHTML="";
+
+scholarCurriculum.levels.forEach(level=>{
+
+const option=document.createElement("option");
+option.value=level;
+option.textContent=level;
+
+gradeSelect.appendChild(option);
+
+});
+
+loadSubjects();
+}
+
+function loadSubjects(){
+
+subjectSelect.innerHTML="";
+strandSelect.innerHTML="";
+subStrandSelect.innerHTML="";
+
+const subjects = scholarCurriculum.subjects[gradeSelect.value];
+
+Object.keys(subjects).forEach(subject=>{
+
+const option=document.createElement("option");
+option.value=subject;
+option.textContent=subject;
+
+subjectSelect.appendChild(option);
+
+});
+
+loadStrands();
+}
+
+function loadStrands(){
+
+strandSelect.innerHTML="";
+subStrandSelect.innerHTML="";
+
+const strands = scholarCurriculum.subjects[gradeSelect.value][subjectSelect.value];
+
+Object.keys(strands).forEach(strand=>{
+
+const option=document.createElement("option");
+option.value=strand;
+option.textContent=strand;
+
+strandSelect.appendChild(option);
+
+});
+
+loadTopics();
+}
+
+function loadTopics(){
+
+subStrandSelect.innerHTML="";
+
+const topics = scholarCurriculum.subjects[gradeSelect.value][subjectSelect.value][strandSelect.value];
+
+topics.forEach(topic=>{
+
+const option=document.createElement("option");
+option.value=topic;
+option.textContent=topic;
+
+subStrandSelect.appendChild(option);
+
+});
+
+}
+
+gradeSelect.addEventListener("change",loadSubjects);
+subjectSelect.addEventListener("change",loadStrands);
+strandSelect.addEventListener("change",loadTopics);
+
+loadGrades();
+
+</script>
 <script src="./curriculum-database.js"></script>
   </body>
 </html>
